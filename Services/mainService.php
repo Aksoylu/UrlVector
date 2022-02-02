@@ -10,11 +10,15 @@ class mainService{
     public function isAvailable()
     {
         //TODO: CHECK AVAILABLE
+        
         $available = FALSE;
-
-        $userMessage;
-        if ($available)
+        $query = new XQuery();
+        $query->select('urls',['id'])->where('name='._param($this->params->url_name));
+        $result = $query->fetch(1);
+        if ($result){
             $userMessage = $this->language->available;
+            $available = TRUE;
+        }
         else
             $userMessage = $this->language->not_available;
 

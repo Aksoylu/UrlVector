@@ -23,13 +23,16 @@ class SERVICE
 
         if (file_exists($classPath))
         {
+            //Convert parameters into object
+            $dataObject = new DATAOBJECT($parameters);
+            
             require_once $classPath;
-            $serviceObject = new $className($parameters);
+            $serviceObject = new $className($dataObject);
             $serviceObject->language = $language; 
             if(method_exists($serviceObject,$functionName))
             {   
                 
-                $serviceObject->$functionName($parameters);
+                $serviceObject->$functionName($dataObject);
             }
             else
             {
@@ -54,6 +57,14 @@ class SERVICE
         exit();
     }
 
+    public static function DEBUG($parameters)
+    {   
+        if (is_array($parameters))
+            print_r($parameters);
+        else
+            echo $parameters;
+        exit();
+    }
     
     public static function LANGUAGE($languageFileName)
     {
@@ -74,6 +85,30 @@ class SERVICE
         
     }
 
+    
+
 }
 
+class DATAOBJECT {
+
+
+    public function __construct(Array $properties=array()){
+      foreach($properties as $key => $value){
+        $this->{$key} = $value;
+      }
+    }
+
+    public function toArray(){
+        $tmp_array = array();
+        foreach ($this as $key => $value) {
+            $tmp_array[$key] = $value;
+        }
+        return $tmp_array;
+    }
+
+    public function dump(){
+        $tmp_array = $this->toArray();
+        print_r($tmp_array);
+    }
+}
 ?>

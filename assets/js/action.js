@@ -1,10 +1,12 @@
 var checkButton = null;
 var actionForm = null;
+var searchInput = null;
 var availabilityText = null;
 window.onload = ()=>{
     checkButton =  document.querySelector("#checkButton");
     actionForm =  document.querySelector(".action-form");
     availabilityText = document.querySelector(".available");
+    searchInput = document.querySelector("#searchInput");
 }
 
 const fetchService = ()=>{
@@ -14,16 +16,15 @@ const fetchService = ()=>{
     request.onload = function() {
         if (this.status == 200) 
         {
-            console.log(this.response);
             let data = JSON.parse(this.response);
-            //msg
             availabilityText.innerHTML = data.msg;
             setAvailability(data.isAvailable);
 
         } 
     };
-
-    request.send();
+    let formData = new FormData();
+    formData.append("url_name",searchInput.value)
+    request.send(formData);
 };
 
 const checkInput = (e) =>{
