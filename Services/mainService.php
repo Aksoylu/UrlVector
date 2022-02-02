@@ -21,7 +21,6 @@ class mainService{
             $available = TRUE;
         }
            
-
         SERVICE::RESPONSE([
 
             "code" => "200",
@@ -37,7 +36,20 @@ class mainService{
         $query = new XQuery();
         $query->select('urls',['id'])->where('name='._param($this->params->url_name));
         $result = $query->fetch(1);
+        if ($result)
+            $userMessage = $this->language->not_available;
+        else
+        {
+            //TODO : Implement issuing query
+            SERVICE::RESPONSE([
 
+                "code" => "200",
+                "msg" => $userMessage,
+                "isAvailable" => $available
+    
+            ]);
+        }
+        
     }
 
 

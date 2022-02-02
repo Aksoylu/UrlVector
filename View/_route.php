@@ -13,10 +13,11 @@ Route::GET("/", function(){
 
 });
 
-
 /* Error Handler */
 
 Route::ERROR(function(){ 
+
+  //TODO : Check is exist on database. If not exist, show error page
 
   PROTON::LANGUAGE("mainLanguage");
   $controller = PROTON::CONTROLLER("maincontroller", ["page" => "error"]);
