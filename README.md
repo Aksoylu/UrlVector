@@ -5,5 +5,5 @@ An URL Shortening Service Created with Proton Framework <br>
 <br>
 <a href="http://proton.aksoylu.space">Click for Proton Framework</a>
 
-## How to start up a proton project ?
+## How it works ?
 Coming soon...
