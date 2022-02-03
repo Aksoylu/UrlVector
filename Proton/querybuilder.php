@@ -33,8 +33,13 @@ function _avg($column,$alias) {
 };
 
 function _param($val)
-{
-    return "'".$val."'";
+{   
+    if (is_null($val))
+        return 0;
+    else if (is_numeric($val) OR is_bool($val))
+        return SECURITY::ESCAPE($val);
+    else
+        return "'".SECURITY::ESCAPE($val)."'";
 }
 
 function _like($val)
@@ -233,9 +238,14 @@ class XQuery{
     }
 
 
-    public function where($statement)
+    public function where($statement, $variables)
     {
-        //$statement = $this->security($statement);
+        //_param
+        foreach($variables as $key => $value)
+        {   
+            
+            $statement = str_replace('{'.$key.'}', _param($value), $statement);
+        }
         $this->query .= ' WHERE ' . $statement;
         return $this;
     }
@@ -248,7 +258,11 @@ class XQuery{
 
     public function run()
     {
-        if($this->type == "INSERT")
+        $this->rc = self::$db->prepare($this->query)->execute($this->parameters);
+        return $this->rc;
+
+        // TODO :  RESEARCH & FIX
+        if($this->type == "INSERT" )
         {   
 
             $this->rc = self::$db->prepare($this->query)->execute($this->parameters);

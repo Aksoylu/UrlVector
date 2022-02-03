@@ -25,7 +25,9 @@ class mainLanguage{
       "ok_button" => "Tamamla",
       /* Service */
       "available" => "Bu URL kısaltmasını kullanabilirsiniz.",
-      "not_available" => "Maalesef bu URL daha önce alınmış."
+      "not_available" => "Maalesef bu URL daha önce alınmış.",
+      "issued" => "URL yönlendirmeniz başarıyla oluşturuldu ",
+      "service_server_error" => "Sunucu tarafında bir sorun oluştu. İşlem başarısız. Bunun için üzgünüz."
     ];
 
     public $en = [
@@ -50,7 +52,9 @@ class mainLanguage{
       "ok_button" => "Save",
       /* Service */
       "available" => "You can use this URL shortener.",
-      "not_available" => "Sorry, this URL has already been taken."
+      "not_available" => "Sorry, this URL has already been taken.",
+      "issued" => "Your URL has been successfully created",
+      "service_server_error" => "There was a problem on the server side. The operation failed. We are sorry for that."
             
     ];
 

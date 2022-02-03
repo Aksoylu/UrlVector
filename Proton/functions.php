@@ -63,7 +63,7 @@ public static function  isJson($string,$return_data = false)
         return (json_last_error() == JSON_ERROR_NONE) ? ($return_data ? $data : TRUE) : FALSE;
 }
     
-function security($data)
+public static function ESCAPE($data)
 {
 	//variable security
 	$data = htmlspecialchars(strip_tags(trim(addslashes($data))));
