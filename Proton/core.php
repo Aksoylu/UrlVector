@@ -161,6 +161,22 @@ class PROTON
         echo "<script>".$code."</script>";        
     }
     
+    public static function JSCONST($jsname,$value)
+    {
+       if (!is_string($value) AND !is_numeric($value))
+            if(is_array($value) OR is_countable($value))
+                $value = json_encode($value,JSON_UNESCAPED_UNICODE);
+            else if(is_object($value))
+                $value = json_encode(get_object_vars($value),JSON_UNESCAPED_UNICODE);
+            else if(is_null($value))
+                $value = null;
+
+        if ($value)
+            echo "<script>const ".$jsname." = '".$value."';</script>";  
+        else
+            echo "<script>const ".$jsname." = null;</script>";     
+    }
+
     public static function DETECTLANGUAGE()
     {
         

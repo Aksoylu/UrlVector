@@ -33,6 +33,9 @@ class mainService{
     public function issueUrl()
     {
         $available = FALSE;
+
+        //TODO: Check content for preventing sql injection or another security vulnables
+
         $query = new XQuery();
         $query->select('urls',['id'])->where('name='._param($this->params->url_name));
         $result = $query->fetch(1);
@@ -40,15 +43,32 @@ class mainService{
             $userMessage = $this->language->not_available;
         else
         {
-            //TODO : Implement issuing query
-            SERVICE::RESPONSE([
+            $query = new XQuery();
 
-                "code" => "200",
-                "msg" => $userMessage,
-                "isAvailable" => $available
-    
+            if ($this->params->delay)
+                $this->params->delay = 3;
+            else
+                $this->params->delay = 0;
+
+            $query->insert('urls', [
+                "name"=> $this->params->url_name,   
+                "password" => md5($this->params->password),
+                "navigation_url" => $this->params->source_url,
+                "navigation_delay" => $this->params->delay,
+                "navigation_text" => $this->params->user_message
+
             ]);
+            $query->run();
         }
+
+        //TODO : Implement issuing query
+        SERVICE::RESPONSE([
+
+            "code" => "200",
+            "msg" => $userMessage,
+            "isAvailable" => $available
+
+        ]);
         
     }
 

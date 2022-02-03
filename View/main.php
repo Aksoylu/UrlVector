@@ -3,9 +3,13 @@ PROTON::TITLE("Proton Framework Example");
 PROTON::CSSDEF("css/bootstrap.css");
 PROTON::CSSDEF("css/style.css");
 PROTON::CSSDEF("css/animate.min.css");
-
 PROTON::FAVDEF("favicon.ico");
 PROTON::JSDEF("js/action.js");
+
+PROTON::JSCONST("userMessageHeader", $language->user_message_header);
+PROTON::JSCONST("userMessagePlaceholder", $language->user_message_placeholder);
+PROTON::JSCONST("userMessageText", $language->user_message_text);
+
 ?>
 
 <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"   />
@@ -30,7 +34,26 @@ PROTON::JSDEF("js/action.js");
 
               
           <div class="action-form animate__animated" >
-            Place modal here 
+            <form>
+              <div class="form-group">
+                <label for="formUrl"><?php echo $language->navigation_url;?></label>
+                <input type="url" class="form-control" id="formUrl" placeholder="<?php echo $language->navigation_placeholder;?>">
+                <small class="form-text text-muted"><?php echo $language->navigation_url_sub;?></small>
+              </div>
+              <div class="form-group">
+                <label for="formPinInput">Pin</label>
+                <input type="password" class="form-control" id="formPinInput" placeholder="Password">
+                <small class="form-text text-muted"><?php echo $language->pin_sub;?></small>
+              </div>
+              <div class="form-group form-check">
+                <input type="checkbox" onChange="navigationDelayChanged()" class="form-check-input" id="formNavigationDelayCheck">
+                <label class="form-check-label" for="formNavigationDelayCheck"><?php echo $language->navigation_delay;?></label>
+              </div>
+              <div id="dynamicArea">
+              
+              </div>
+              <button type="submit" onClick="issueService()" class="btn btn-primary"><?php echo $language->ok_button;?></button>
+            </form>
           </div>
 
         </div>

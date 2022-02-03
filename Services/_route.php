@@ -14,6 +14,12 @@ Route::CONFIG(array(
   
   });
 
+  Route::POST("issueUrl", function(){ 
+
+    SERVICE::LANGUAGE("mainLanguage");
+    SERVICE::BIND("mainService@issueUrl", $_POST);
+
+  });
 
 Route::ERROR(function(){ 
 

@@ -35,3 +35,10 @@
 .text_red{
   color : #c40707;
 }
+
+.action-form form{
+  border: 1px solid #adadad;
+  padding: 15px 15px 15px 15px;
+  border-radius: 5px;
+
+}
