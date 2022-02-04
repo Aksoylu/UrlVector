@@ -28,7 +28,10 @@ class mainLanguage{
       "not_available" => "Maalesef bu URL daha önce alınmış.",
       "issued" => "URL yönlendirmeniz başarıyla oluşturuldu ",
       "service_server_error" => "Sunucu tarafında bir sorun oluştu. İşlem başarısız. Bunun için üzgünüz.",
-      "variable_not_available" => "Lütfen beklendiği gibi {area} alanını en az {min} en çok {max} olarak doldurun"
+      "variable_not_available" => "Lütfen beklendiği gibi {area} alanını en az {min} en çok {max} olarak doldurun",
+      "text_target_path" => "Hedef link",
+      "text_source_url" => "Kaynak url",
+      "text_password" => "Pin"
     ];
 
     public $en = [
@@ -56,7 +59,11 @@ class mainLanguage{
       "not_available" => "Sorry, this URL has already been taken.",
       "issued" => "Your URL has been successfully created",
       "service_server_error" => "There was a problem on the server side. The operation failed. We are sorry for that.",
-      "variable_not_available" => "Please fill in {area} as minimum {min} and maximum {max} as expected"
+      
+      "variable_not_available" => "Please fill in {area} as minimum {min} and maximum {max} as expected",
+      "text_target_path" => "Target link",
+      "text_source_url" => "Source url",
+      "text_password" => "Pin"
     ];
 
 

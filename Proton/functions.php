@@ -81,7 +81,7 @@ class TEXT{
             $i = 1;
             foreach($matches[0] as $match)
             {
-                $text_for_replace= str_replace($match, $args[$i], $text_for_replace);
+                $text_for_replace = str_replace($match, $args[$i], $text_for_replace);
                 $i += 1;
             }
             return $text_for_replace;

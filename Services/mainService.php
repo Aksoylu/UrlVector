@@ -12,13 +12,17 @@ class mainService{
         if(!$this->checkVariable($this->params->url_name))
             SERVICE::RESPONSE([
                 "code" => 301,
-                "msg" => $this->language->variable_not_available,
+                "msg" => TEXT::FORMAT(
+                    $this->language->variable_not_available, 
+                    $this->language->text_target_path, 3, 32),
                 "isAvailable" => FALSE
             ]);
-
+        
+        $url_name = $this->fixUrlName($this->params->url_name);
         $available = FALSE;
+
         $query = new XQuery();
-        $query->select('urls',['id'])->where('name={url_name}', ["url_name" => $this->params->url_name]);    //._param()
+        $query->select('urls',['id'])->where('name={url_name}', ["url_name" => $url_name]);    //._param()
         $result = $query->fetch(1);
         if ($result)
             $userMessage = $this->language->not_available;
@@ -39,30 +43,40 @@ class mainService{
 
     public function issueUrl()
     {
-        $formatted = TEXT::FORMAT($this->language->variable_not_available, "val1", "val2", "val3");
-        SERVICE::DEBUG($formatted);
+        if(!$this->checkVariable($this->params->target_path,3))
+            SERVICE::RESPONSE([
+                "code" => 301,
+                "msg" => TEXT::FORMAT(
+                    $this->language->variable_not_available, 
+                    $this->language->text_target_path, 3, 15),
+                "isAvailable" => FALSE
+            ]);
         
-        /*
-        if(!$this->checkVariable([$this->params->target_path, $this->params->source_url, $this->params->password]))
+        if(!$this->checkVariable($this->params->source_url,12))
             SERVICE::RESPONSE([
                 "code" => 301,
-                "msg" => "",//TEXT::FORMAT($this->language->variable_not_available, "key" => "value", "key2" => "value2"),
+                "msg" => TEXT::FORMAT(
+                    $this->language->variable_not_available, 
+                    $this->language->text_target_path, 12, 32),
                 "isAvailable" => FALSE
             ]);
-        */
-        if(!$this->checkVariable($this->params->source_url,12) )
+        
+        if(!$this->checkVariable($this->params->password,3))
             SERVICE::RESPONSE([
                 "code" => 301,
-                "msg" => "", //TEXT::FORMAT($this->language->variable_not_available, ),
+                "msg" => TEXT::FORMAT(
+                    $this->language->variable_not_available, 
+                    $this->language->text_password, 3, 8),
                 "isAvailable" => FALSE
             ]);
-
+        
         $available = FALSE;
         $response_code;
         $userMessage;
+        $target_path = $this->fixUrlName($this->params->target_path);
 
         $query = new XQuery();
-        $query->select('urls',['id'])->where('name={target_path}', ["target_path" => $this->params->target_path ]  );
+        $query->select('urls',['id'])->where('name={target_path}', ["target_path" => $target_path]  );
         $result = $query->fetch(1);
         if ($result)
         {
@@ -74,13 +88,16 @@ class mainService{
         {
             $query = new XQuery();
 
-            if ($this->params->delay)
+            if ($this->params->delay == 1)
                 $this->params->delay = 3;
             else
+            {
                 $this->params->delay = 0;
+                $this->params->user_message = "";
+            }
 
             $query->insert('urls', [
-                "name"=> $this->params->target_path,   
+                "name"=> $target_path,   
                 "password" => md5($this->params->password),
                 "navigation_url" => $this->params->source_url,
                 "navigation_delay" => $this->params->delay,
@@ -121,6 +138,12 @@ class mainService{
             return FALSE;
         
         return TRUE;
+    }
+
+    //TODO : Replace url critical characters
+    function  fixUrlName($value)
+    {
+        return $value;
     }
 
 

@@ -107,8 +107,12 @@ const issueService = ()=>{
     formData.append("target_path",searchInput.value);
     formData.append("source_url",formUrl.value);
     formData.append("password",formPinInput.value);
-    formData.append("delay", formNavigationDelayCheck.checked);
-    formData.append("user_message",userMessage.value);
+    if(formNavigationDelayCheck.checked)
+        formData.append("delay", 1);
+    else
+        formData.append("delay", 0);
+    if(!formNavigationDelayCheck.checked)
+        formData.append("user_message","");
     request.send(formData);
 };
 
