@@ -27,7 +27,8 @@ class mainLanguage{
       "available" => "Bu URL kısaltmasını kullanabilirsiniz.",
       "not_available" => "Maalesef bu URL daha önce alınmış.",
       "issued" => "URL yönlendirmeniz başarıyla oluşturuldu ",
-      "service_server_error" => "Sunucu tarafında bir sorun oluştu. İşlem başarısız. Bunun için üzgünüz."
+      "service_server_error" => "Sunucu tarafında bir sorun oluştu. İşlem başarısız. Bunun için üzgünüz.",
+      "variable_not_available" => "Lütfen beklendiği gibi {area} alanını en az {min} en çok {max} olarak doldurun"
     ];
 
     public $en = [
@@ -54,8 +55,8 @@ class mainLanguage{
       "available" => "You can use this URL shortener.",
       "not_available" => "Sorry, this URL has already been taken.",
       "issued" => "Your URL has been successfully created",
-      "service_server_error" => "There was a problem on the server side. The operation failed. We are sorry for that."
-            
+      "service_server_error" => "There was a problem on the server side. The operation failed. We are sorry for that.",
+      "variable_not_available" => "Please fill in {area} as minimum {min} and maximum {max} as expected"
     ];
 
 

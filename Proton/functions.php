@@ -54,6 +54,57 @@ class REQUEST{
 
 }
 
+class TEXT{
+
+    public static function FORMAT(){
+        $args = func_get_args();
+        if (sizeof($args) < 1)
+            return NULL;
+        
+        if (!is_string($args[0]))
+            return NULL;
+
+        if (sizeof($args) == 1 )
+            return $args[0];
+
+        $text_for_replace = $args[0];
+        
+        if(sizeof($args) > 2)
+        {
+            //do format with order and return
+            $pattern="/\{.*?\}/";
+            preg_match_all($pattern, $text_for_replace, $matches);
+            
+            if(sizeof($matches[0]) != sizeof($args) - 1)
+                return NULL;
+
+            $i = 1;
+            foreach($matches[0] as $match)
+            {
+                $text_for_replace= str_replace($match, $args[$i], $text_for_replace);
+                $i += 1;
+            }
+            return $text_for_replace;
+        }
+        else if (sizeof($args) == 2)
+        {
+            if(!is_array($args[1]))
+                return $args[0];
+            
+            //do format with naming
+            foreach($args[1] as $key => $value)
+            {
+                str_replace('{'.$key.'}', $value, $text_for_replace);
+            }
+            return $text_for_replace;
+        }
+        
+        return NULL;
+        
+    }
+
+}
+
 class SECURITY{ 
 
 

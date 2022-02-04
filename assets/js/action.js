@@ -79,6 +79,7 @@ const navigationDelayChanged = () =>{
 
 const setIssueResponse = (data) =>{
     console.log(data);
+    //TODO : Complate interaction
 }
 
 
@@ -99,7 +100,7 @@ const issueService = ()=>{
         }
         else
         {
-            setIssueResponse({'code' : 500 , 'msg': 'Server Error'});
+            setIssueResponse({'code' : 500 , 'msg': serviceServerError});
         }
     };
     let formData = new FormData();

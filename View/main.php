@@ -9,12 +9,9 @@ PROTON::JSDEF("js/action.js");
 PROTON::JSCONST("userMessageHeader", $language->user_message_header);
 PROTON::JSCONST("userMessagePlaceholder", $language->user_message_placeholder);
 PROTON::JSCONST("userMessageText", $language->user_message_text);
-
+PROTON::JSCONST("serviceServerError", $language->service_server_error);
 ?>
 
-<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"   />
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!-- Page content -->
   <main role="main" class="container mt-5">
   

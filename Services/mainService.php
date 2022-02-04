@@ -9,7 +9,12 @@ class mainService{
 
     public function isAvailable()
     {
-        //TODO : Check character limitations 
+        if(!$this->checkVariable($this->params->url_name))
+            SERVICE::RESPONSE([
+                "code" => 301,
+                "msg" => $this->language->variable_not_available,
+                "isAvailable" => FALSE
+            ]);
 
         $available = FALSE;
         $query = new XQuery();
@@ -25,7 +30,7 @@ class mainService{
            
         SERVICE::RESPONSE([
 
-            "code" => "200",
+            "code" => 200,
             "msg" => $userMessage,
             "isAvailable" => $available
 
@@ -34,9 +39,23 @@ class mainService{
 
     public function issueUrl()
     {
-
-        //TODO : Check character limitations 
-
+        $formatted = TEXT::FORMAT($this->language->variable_not_available, "val1", "val2", "val3");
+        SERVICE::DEBUG($formatted);
+        
+        /*
+        if(!$this->checkVariable([$this->params->target_path, $this->params->source_url, $this->params->password]))
+            SERVICE::RESPONSE([
+                "code" => 301,
+                "msg" => "",//TEXT::FORMAT($this->language->variable_not_available, "key" => "value", "key2" => "value2"),
+                "isAvailable" => FALSE
+            ]);
+        */
+        if(!$this->checkVariable($this->params->source_url,12) )
+            SERVICE::RESPONSE([
+                "code" => 301,
+                "msg" => "", //TEXT::FORMAT($this->language->variable_not_available, ),
+                "isAvailable" => FALSE
+            ]);
 
         $available = FALSE;
         $response_code;
@@ -83,14 +102,27 @@ class mainService{
 
         //TODO : Implement issuing query
         SERVICE::RESPONSE([
-
             "code" => $response_code,
             "msg" => $userMessage,
             "isAvailable" => $available
-
         ]);
         
     }
+
+    function checkVariable($value, $limit = 3)
+    {
+        if (is_null($value))
+            return FALSE;
+
+        if(strlen($value) < $limit )
+            return FALSE;
+        
+        if(strlen($value)> 64)
+            return FALSE;
+        
+        return TRUE;
+    }
+
 
 
 }
