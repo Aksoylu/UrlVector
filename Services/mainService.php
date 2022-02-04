@@ -86,6 +86,7 @@ class mainService{
 
         else
         {
+            //TODO BUG
             $query = new XQuery();
 
             if ($this->params->delay == 1)
