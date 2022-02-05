@@ -16,6 +16,7 @@ define("SERVICE_EXTENSION","service");  /* 'service' is default extension for Pr
 
 define("PROJECT_NAME", "Url Vector");
 define("DOMAIN", "url.aksoylu.space");
+define("PROTOCOL", "http");
 
 
 

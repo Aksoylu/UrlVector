@@ -10,17 +10,29 @@ var formNavigationDelayCheck = null;
 var dynamicArea = null;
 var userMessage = null;
 
+var responseDynamicArea = null;
 window.onload = ()=>{
     checkButton =  document.querySelector("#checkButton");
     actionForm =  document.querySelector(".action-form");
     availabilityText = document.querySelector(".available");
-    searchInput = document.querySelector("#searchInput");
 
     formUrl = document.querySelector("#formUrl");
     formPinInput = document.querySelector("#formPinInput");
     formNavigationDelayCheck = document.querySelector("#formNavigationDelayCheck");
-
     dynamicArea = document.querySelector("#dynamicArea");
+    responseDynamicArea = document.querySelector("#responseDynamicArea");
+
+    searchInput = document.querySelector("#searchInput");
+    searchInput.addEventListener("keyup", function(event) {
+        
+        if (event.keyCode === 13) 
+        {
+          event.preventDefault();
+          if(!checkButton.disabled)
+            fetchService();
+        }
+    });
+
 }
 
 
@@ -28,7 +40,6 @@ window.onload = ()=>{
 
 const checkInput = (e) =>{
     setTimeout(()=>{
-        console.log(e.value.length);
         if (e.value.length > 0)
             checkButton.disabled = false;
         else
@@ -78,8 +89,28 @@ const navigationDelayChanged = () =>{
 }
 
 const setIssueResponse = (data) =>{
-    console.log(data);
-    //TODO : Complate interaction
+    console.log(data); 
+    if(data.code == 200)
+    {
+        if(data.isAvailable)
+        {
+            responseDynamicArea.innerHTML = data.msg + '<br>' + '<a target="_blank" href="' + data.issuedDomain + '">' + data.issuedDomain + '</a>' ;
+            responseDynamicArea.classList.remove("text_red");
+            responseDynamicArea.classList.add("text_green");
+        }
+        else
+        {
+            responseDynamicArea.innerHTML = data.msg;
+            responseDynamicArea.classList.remove("text_green");
+            responseDynamicArea.classList.add("text_red");
+        }
+    }
+    else
+    {
+        responseDynamicArea.innerHTML = data.msg;
+        responseDynamicArea.classList.remove("text_green");
+        responseDynamicArea.classList.add("text_red");
+    }
 }
 
 
@@ -89,31 +120,32 @@ const setIssueResponse = (data) =>{
 const issueService = ()=>{
     event.preventDefault();
 
-    var request = new XMLHttpRequest();
-    request.open('POST', 'issueUrl.service', true);
-
-    request.onload = function() {
-        if (this.status == 200) 
-        {
-            let data = JSON.parse(this.response);
-            setIssueResponse(data);
-        }
-        else
-        {
-            setIssueResponse({'code' : 500 , 'msg': serviceServerError});
-        }
-    };
     let formData = new FormData();
     formData.append("target_path",searchInput.value);
     formData.append("source_url",formUrl.value);
     formData.append("password",formPinInput.value);
     if(formNavigationDelayCheck.checked)
+    {
         formData.append("delay", 1);
+        formData.append("user_message",userMessage.value);
+    }
     else
+    {
         formData.append("delay", 0);
-    if(!formNavigationDelayCheck.checked)
         formData.append("user_message","");
+    }
+    
+    let request = new XMLHttpRequest();
+    request.open('POST', 'issueUrl.service', true);
     request.send(formData);
+
+    request.onload = function() {
+        if (this.status == 200) 
+            setIssueResponse(JSON.parse(this.response));
+        else
+            setIssueResponse({'code' : 500 , 'msg': serviceServerError});
+    };
+    
 };
 
 const fetchService = ()=>{

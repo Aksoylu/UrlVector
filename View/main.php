@@ -47,9 +47,12 @@ PROTON::JSCONST("serviceServerError", $language->service_server_error);
                 <label class="form-check-label" for="formNavigationDelayCheck"><?php echo $language->navigation_delay;?></label>
               </div>
               <div id="dynamicArea">
-              
               </div>
-              <button type="submit" onClick="issueService()" class="btn btn-primary"><?php echo $language->ok_button;?></button>
+              <button type="button" onClick="issueService()" class="btn btn-outline-primary"><?php echo $language->ok_button;?></button>
+
+              <div id="responseDynamicArea">
+                TEST 123
+              </div>
             </form>
           </div>
 

@@ -29,6 +29,7 @@ class mainLanguage{
       "issued" => "URL yönlendirmeniz başarıyla oluşturuldu ",
       "service_server_error" => "Sunucu tarafında bir sorun oluştu. İşlem başarısız. Bunun için üzgünüz.",
       "variable_not_available" => "Lütfen beklendiği gibi {area} alanını en az {min} en çok {max} olarak doldurun",
+      "url_not_valid" => "'{url}' adresi doğru gözükmüyor. Lütfen kontrol edin.",
       "text_target_path" => "Hedef link",
       "text_source_url" => "Kaynak url",
       "text_password" => "Pin"
@@ -61,6 +62,7 @@ class mainLanguage{
       "service_server_error" => "There was a problem on the server side. The operation failed. We are sorry for that.",
       
       "variable_not_available" => "Please fill in {area} as minimum {min} and maximum {max} as expected",
+      "url_not_valid" => "'{url}' not seems like a valid url. Please check.",
       "text_target_path" => "Target link",
       "text_source_url" => "Source url",
       "text_password" => "Pin"

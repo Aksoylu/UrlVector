@@ -52,12 +52,12 @@ class mainService{
                 "isAvailable" => FALSE
             ]);
         
-        if(!$this->checkVariable($this->params->source_url,12))
+        if(!$this->checkIsUrl($this->params->source_url))
             SERVICE::RESPONSE([
                 "code" => 301,
                 "msg" => TEXT::FORMAT(
-                    $this->language->variable_not_available, 
-                    $this->language->text_target_path, 12, 32),
+                    $this->language->url_not_valid, 
+                    $this->params->source_url),
                 "isAvailable" => FALSE
             ]);
         
@@ -83,10 +83,8 @@ class mainService{
             $userMessage = $this->language->not_available;
             $response_code = 305;
         }
-
         else
         {
-            //TODO BUG
             $query = new XQuery();
 
             if ($this->params->delay == 1)
@@ -98,7 +96,8 @@ class mainService{
             }
 
             $query->insert('urls', [
-                "name"=> $target_path,   
+                "name"=> $target_path,
+                "issuing_date" => date("Y-m-d H:i:s"),
                 "password" => md5($this->params->password),
                 "navigation_url" => $this->params->source_url,
                 "navigation_delay" => $this->params->delay,
@@ -108,8 +107,10 @@ class mainService{
             $result = $query->run();
             if($result)
             {
+                $available = TRUE;
                 $userMessage = $this->language->issued;
                 $response_code = 200;
+                $target_path = TEXT::FORMAT("{protocol}://{domain}/{target_path}", PROTOCOL, DOMAIN, $target_path);
             }
             else
             {
@@ -118,11 +119,11 @@ class mainService{
             }
         }
 
-        //TODO : Implement issuing query
         SERVICE::RESPONSE([
             "code" => $response_code,
             "msg" => $userMessage,
-            "isAvailable" => $available
+            "isAvailable" => $available,
+            "issuedDomain" => $target_path
         ]);
         
     }
@@ -141,12 +142,21 @@ class mainService{
         return TRUE;
     }
 
-    //TODO : Replace url critical characters
+
     function  fixUrlName($value)
     {
-        return $value;
+        $unavailable = array("/", ".", "'", "!", "/", "%", "+", "{", "}", "*", "?", "[", "]", "&", "$", "(", ")", "^", "=", " ", "  ");
+        $available   = array("-", "_", "-", "|", "-", "-", "-", "_", "_", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-");
+        return str_replace($unavailable, $available, $value);
     }
-
+    
+    function checkIsUrl($url)
+    {
+        if (preg_match("#^https?://.+#", $url) and @fopen($url,"r"))
+            return TRUE;
+        else
+            return FALSE;
+    }
 
 
 }
