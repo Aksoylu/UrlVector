@@ -152,7 +152,7 @@ class PROTON
         }
         else
         {
-            echo '<img src="'.$assetName.'" style="'.$className.'"/>';
+            echo '<img src="'.$assetName.'" class="'.$className.'"/>';
         }
        
     }

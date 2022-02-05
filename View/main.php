@@ -1,5 +1,5 @@
 <?php
-PROTON::TITLE("Proton Framework Example");
+PROTON::TITLE("Url Vector");
 PROTON::CSSDEF("css/bootstrap.css");
 PROTON::CSSDEF("css/style.css");
 PROTON::CSSDEF("css/animate.min.css");
@@ -19,6 +19,7 @@ PROTON::JSCONST("serviceServerError", $language->service_server_error);
         <div class="col-2">
         </div>
         <div class="col-8">
+          <?php PROTON::IMDEF("img/logo.png",$className = "header_logo") ?>
           <p class="lead header"><?php echo $language->header;?></p>
           <p class="lead subheader"><?php echo $language->subHeader;?></p>
           <div class="input-group">

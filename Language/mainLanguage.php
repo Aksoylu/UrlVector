@@ -36,7 +36,8 @@ class mainLanguage{
       "text_password" => "Pin",
 
       /* Navigation */
-      "navigating_text" => "<b> {url} </b> adresine yönlendiriliyorsunuz..."
+      "navigating_text" => "<b> {url} </b> adresine yönlendiriliyorsunuz...",
+      "time_left" => " Saniye"
     ];
 
     public $en = [
@@ -73,7 +74,8 @@ class mainLanguage{
       "text_password" => "Pin",
 
       /* Navigation */
-      "navigating_text" => "You are navigating to <b> {url} </b> ..."
+      "navigating_text" => "You are navigating to <b> {url} </b> ...",
+      "time_left" => " Seconds"
     ];
 
 
