@@ -13,6 +13,16 @@ Route::GET("/", function(){
 
 });
 
+Route::GET("navigate", function(){ 
+  
+  PROTON::LANGUAGE("mainLanguage");
+  $controller = PROTON::CONTROLLER("navigateController");
+  PROTON::RENDER("navigate", $controller);
+
+
+});
+
+
 /* Error Handler */
 
 Route::ERROR(function(){ 

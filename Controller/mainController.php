@@ -1,5 +1,5 @@
 <?php
-/* Example Controller */
+/* Main Controller */
 Class mainController{
 
 

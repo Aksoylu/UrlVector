@@ -10,6 +10,7 @@ PROTON::JSCONST("userMessageHeader", $language->user_message_header);
 PROTON::JSCONST("userMessagePlaceholder", $language->user_message_placeholder);
 PROTON::JSCONST("userMessageText", $language->user_message_text);
 PROTON::JSCONST("serviceServerError", $language->service_server_error);
+
 ?>
 
   <!-- Page content -->
@@ -20,7 +21,9 @@ PROTON::JSCONST("serviceServerError", $language->service_server_error);
         </div>
         <div class="col-8">
           <p class="lead header"><?php echo $language->header;?></p>
-          <p class="lead subheader"><?php echo $language->subHeader;?></p>
+          <p class="lead subheader"><?php echo TEXT::FORMAT($language->navigating_text, $controller->navigationUrl);?></p>
+
+          
           <div class="input-group">
             <input type="search" onKeyDown="checkInput(this)" id="searchInput" class="form-control rounded" placeholder="<?php echo $language->checkout;?>" aria-label="Search" aria-describedby="search-addon" />
             <button type="button" onClick="fetchService()" id="checkButton" class="btn btn-outline-primary" disabled>

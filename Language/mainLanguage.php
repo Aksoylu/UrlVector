@@ -23,6 +23,7 @@ class mainLanguage{
       "user_message_placeholder" => "Mesaj...",
       "user_message_text" => "Ziyaretçiler yönlendirmeden önce bu mesajı görecektir",
       "ok_button" => "Tamamla",
+      
       /* Service */
       "available" => "Bu URL kısaltmasını kullanabilirsiniz.",
       "not_available" => "Maalesef bu URL daha önce alınmış.",
@@ -32,7 +33,10 @@ class mainLanguage{
       "url_not_valid" => "'{url}' adresi doğru gözükmüyor. Lütfen kontrol edin.",
       "text_target_path" => "Hedef link",
       "text_source_url" => "Kaynak url",
-      "text_password" => "Pin"
+      "text_password" => "Pin",
+
+      /* Navigation */
+      "navigating_text" => "<b> {url} </b> adresine yönlendiriliyorsunuz..."
     ];
 
     public $en = [
@@ -55,6 +59,7 @@ class mainLanguage{
       "user_message_placeholder" => "Message...",
       "user_message_text" => "Visitors will see this message before redirecting",
       "ok_button" => "Save",
+
       /* Service */
       "available" => "You can use this URL shortener.",
       "not_available" => "Sorry, this URL has already been taken.",
@@ -65,7 +70,10 @@ class mainLanguage{
       "url_not_valid" => "'{url}' not seems like a valid url. Please check.",
       "text_target_path" => "Target link",
       "text_source_url" => "Source url",
-      "text_password" => "Pin"
+      "text_password" => "Pin",
+
+      /* Navigation */
+      "navigating_text" => "You are navigating to <b> {url} </b> ..."
     ];
 
 

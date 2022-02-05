@@ -89,12 +89,26 @@ class TEXT{
         else if (sizeof($args) == 2)
         {
             if(!is_array($args[1]))
-                return $args[0];
+            {
+                $pattern="/\{.*?\}/";
+                preg_match_all($pattern, $text_for_replace, $matches);
+                if(sizeof($matches[0]) != sizeof($args) - 1)
+                    return NULL;
+                
+                $i = 1;
+                foreach($matches[0] as $match)
+                {
+                    $text_for_replace = str_replace($match, $args[$i], $text_for_replace);
+                    $i += 1;
+                }
+                return $text_for_replace;    
+
+            }
             
             //do format with naming
             foreach($args[1] as $key => $value)
             {
-                str_replace('{'.$key.'}', $value, $text_for_replace);
+                $text_for_replace = str_replace('{'.$key.'}', $value, $text_for_replace);
             }
             return $text_for_replace;
         }
