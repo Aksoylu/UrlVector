@@ -2,12 +2,6 @@ var userMessageText = null;
 var timeLeftText = null;
 var timeLeft = null;
 var navigateFlag = false;
-window.onload = ()=>{
-    timeLeft = navigationDelay;
-    timeLeftText =  document.querySelector("#timeLeftText");
-    userMessageText =  document.querySelector("#userMessageText");
-    setTimeout(setInterval(countDown, 900),100);
-}
 
 const countDown = (e) =>{
     if (navigateFlag)
@@ -22,3 +16,12 @@ const countDown = (e) =>{
     }
         
 }
+
+const pageDefine = ()=>{
+    timeLeft = navigationDelay;
+    timeLeftText =  document.querySelector("#timeLeftText");
+    userMessageText =  document.querySelector("#userMessageText");
+    setInterval(countDown, 900);
+}
+
+setTimeout(pageDefine,100);

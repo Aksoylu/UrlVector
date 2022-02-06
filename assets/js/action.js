@@ -18,7 +18,7 @@ window.onload = ()=>{
 
     headerLogo = document.querySelector(".header_logo"); 
     header = document.querySelector(".header");
-    
+
     checkButton =  document.querySelector("#checkButton");
     actionForm =  document.querySelector(".action-form");
     availabilityText = document.querySelector(".available");
@@ -30,15 +30,18 @@ window.onload = ()=>{
     responseDynamicArea = document.querySelector("#responseDynamicArea");
 
     searchInput = document.querySelector("#searchInput");
-    searchInput.addEventListener("keyup", function(event) {
+    if (searchInput != null)
+    {
+        searchInput.addEventListener("keyup", function(event) {
         
-        if (event.keyCode === 13) 
-        {
-          event.preventDefault();
-          if(!checkButton.disabled)
-            fetchService();
-        }
-    });
+            if (event.keyCode === 13) 
+            {
+              event.preventDefault();
+              if(!checkButton.disabled)
+                fetchService();
+            }
+        });
+    }
 
     headerLogo.addEventListener("click", ()=>{
         window.location = "/";
