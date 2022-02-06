@@ -26,8 +26,3 @@ You can check a running demo on <a href="http://url.aksoylu.space">URL.AKSOYLU.S
 <center>
 <img src="/assets/img/demo.gif" alt="Url Vector Demo" width="80%"/>
 </center>
-
-## Remain : 
-
-- Fix javascript counter bug
-- Fix internal server error (500) error on for non-exist keys.
