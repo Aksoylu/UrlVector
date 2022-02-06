@@ -7,7 +7,7 @@ Class navigateController{
 
     public $pageState;
     public $userMessage;
-    public $delay;
+    public $delay = 3;
     public $navigationUrl;
     public $target;
     public function __construct($params = [])
@@ -38,6 +38,8 @@ Class navigateController{
         }
         else
         {   
+            $this->navigationUrl = "";
+            $this->delay = 0;
             $this->pageState = FALSE;
         }
 
