@@ -1,3 +1,6 @@
+var headerLogo = null;
+var header = null;
+
 var checkButton = null;
 var actionForm = null;
 var searchInput = null;
@@ -12,6 +15,10 @@ var userMessage = null;
 
 var responseDynamicArea = null;
 window.onload = ()=>{
+
+    headerLogo = document.querySelector(".header_logo"); 
+    header = document.querySelector(".header");
+    
     checkButton =  document.querySelector("#checkButton");
     actionForm =  document.querySelector(".action-form");
     availabilityText = document.querySelector(".available");
@@ -32,6 +39,14 @@ window.onload = ()=>{
             fetchService();
         }
     });
+
+    headerLogo.addEventListener("click", ()=>{
+        window.location = "/";
+    })
+
+    header.addEventListener("click", ()=>{
+        window.location = "/";
+    })
 
 }
 
