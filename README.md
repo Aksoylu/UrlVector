@@ -4,9 +4,11 @@
 <img src="/assets/img/logo.png" alt="Proton Framework Logo" width="25%"/>
 </center>
 An URL Shortening Service Created with Proton Framework <br>
+
+-----
 <img src="/assets/img/proton.png" alt="Proton Framework Logo" width="30%"/>
-<br>
-<a href="http://proton.aksoylu.space">Click for Proton Framework</a>
+<a href="http://proton.aksoylu.space">Click for Proton Framework</a> by the way.
+-----
 
 ## How to install & staring up the project ?
 1) Import the **/urlvector__migrate.sql** file on your MySQL (or MariaDb) server
