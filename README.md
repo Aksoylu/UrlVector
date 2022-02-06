@@ -1,7 +1,7 @@
 
 # Url Vector
 <center>
-<img src="/assets/img/logo.png" alt="Proton Framework Logo" width="50%"/>
+<img src="/assets/img/logo.png" alt="Proton Framework Logo" width="25%"/>
 </center>
 An URL Shortening Service Created with Proton Framework <br>
 <img src="/assets/img/proton.png" alt="Proton Framework Logo" width="30%"/>
