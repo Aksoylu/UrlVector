@@ -7,7 +7,7 @@
 */
 
 session_start();
-define("ASSETS","Assets");
+define("ASSETS","assets");
 define("LAYOUTS","View/_layouts");
 define("UPLOADS","uploads");
 

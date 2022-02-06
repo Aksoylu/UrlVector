@@ -5,7 +5,6 @@ PROTON::CSSDEF("css/style.css");
 PROTON::CSSDEF("css/animate.min.css");
 PROTON::FAVDEF("favicon.ico");
 PROTON::JSDEF("js/navigation.js");
-PROTON::JSDEF("js/action.js");
 
 PROTON::JSCONST("navigationUrl", $controller->navigationUrl);
 PROTON::JSCONST("navigationDelay", $controller->delay);
@@ -23,7 +22,10 @@ PROTON::JSCONST("navigationTimeLeft", $language->time_left);
         <div class="col-2">
         </div>
         <div class="col-8">
-          <?php PROTON::IMDEF("img/logo.png",$className = "header_logo") ?>
+          <?php 
+                PROTON::IMDEF("img/logo.png",$className = "header_logo");
+                PROTON::JSDEF("js/action.js");
+           ?>
           <p class="lead header"><?php echo $language->header;?></p>
           <?php if($controller->pageState == FALSE) :  ?>
                 <p class="lead subheader"><?php echo $language->subHeader;?></p>

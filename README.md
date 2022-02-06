@@ -24,5 +24,5 @@ Note that this is an open source project with GPL licence soi  don't guarantee y
 You can check a running demo on <a href="http://url.aksoylu.space">URL.AKSOYLU.SPACE</a> (My own Url shortener service)
 
 <center>
-<img src="http://proton.aksoylu.space/view/assets/img/demo.gif" alt="Url Vector Demo" width="80%"/>
+<img src="/assets/img/demo.gif" alt="Url Vector Demo" width="80%"/>
 </center>
