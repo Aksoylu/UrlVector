@@ -24,10 +24,10 @@ if( strpos($_SERVER['REQUEST_URI'], '.'.SERVICE_EXTENSION))
 else
 {
     require_once "Proton/globals.php";
+    require_once "Proton/functions.php";
     require_once "Proton/core.php";
     require_once "Proton/route.php";
     require_once "Proton/querybuilder.php";
-    require_once "Proton/functions.php";
     require_once "View/_route.php";
 
 }

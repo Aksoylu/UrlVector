@@ -37,7 +37,8 @@ class mainLanguage{
 
       /* Navigation */
       "navigating_text" => "<b> {url} </b> adresine yönlendiriliyorsunuz...",
-      "time_left" => " Saniye"
+      "time_left" => " Saniye",
+      "not_found" => "Ziyaret etmek istediğiniz URL mevcut değil. Dilerseniz siz oluşturabilirsiniz",
     ];
 
     public $en = [
@@ -75,7 +76,8 @@ class mainLanguage{
 
       /* Navigation */
       "navigating_text" => "You are navigating to <b> {url} </b> ...",
-      "time_left" => " Seconds"
+      "time_left" => " Seconds",
+      "not_found" => "The URL you want to visit does not exist. If you wish, you can create",
     ];
 
 

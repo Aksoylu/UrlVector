@@ -220,6 +220,27 @@ function base64ToImage($b64_image, $output_image, $path="" ) {
     return $output_complete;
 }
 
+class DATAOBJECT {
 
+
+    public function __construct(Array $properties=array()){
+      foreach($properties as $key => $value){
+        $this->{$key} = $value;
+      }
+    }
+
+    public function toArray(){
+        $tmp_array = array();
+        foreach ($this as $key => $value) {
+            $tmp_array[$key] = $value;
+        }
+        return $tmp_array;
+    }
+
+    public function dump(){
+        $tmp_array = $this->toArray();
+        print_r($tmp_array);
+    }
+}
 
 ?>

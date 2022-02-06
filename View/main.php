@@ -28,7 +28,7 @@ PROTON::JSCONST("serviceServerError", $language->service_server_error);
               <?php echo $language->check;?>
             </button>
           </div>
-          <p class="lead available"><?php echo $language->available;?></p>
+          <p class="lead available"></p>
 
               
           <div class="action-form animate__animated" >
@@ -62,6 +62,9 @@ PROTON::JSCONST("serviceServerError", $language->service_server_error);
 
   <footer class="footer fixed-bottom center">
       <center>
-        <span class="text-muted"><?php echo $language->credits; ?> <a href="https://github.com/Aksoylu/url-vector">Github.com/Aksoylu</a></span>
+        <span class="text-muted"><?php echo $language->credits; ?> 
+          <a href="https://github.com/Aksoylu/url-vector">Github.com/Aksoylu</a> 
+           | Copyright 
+          <a href="http://umit.space">Ümit Aksoylu</a></span>
       </center>
-    </footer>
+  </footer>

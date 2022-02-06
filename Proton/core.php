@@ -67,9 +67,11 @@ class PROTON
 
         if (file_exists($controllerName))
             {
-                require_once $controllerName;
+                //Convert parameters into object
+                $dataObject = new DATAOBJECT($def);
 
-                $controller = new $cName($def);
+                require_once $controllerName;
+                $controller = new $cName($dataObject);
                 return $controller;
             }
 
@@ -80,8 +82,7 @@ class PROTON
             }
 
         return $viewName;
-        //$parameters = $def;
-        //require_once $viewName;
+
     }
 
     public static function LAYOUT($viewName, $controller=[], $flag= false)

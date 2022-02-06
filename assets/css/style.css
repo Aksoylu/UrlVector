@@ -48,3 +48,10 @@
   height:auto;
   float:left; 
 }
+.timeleft{
+  font-size: 60px !important;
+}
+.notFound{
+  font-size: 20px !important;
+  color : #d44747;
+}
