@@ -10,7 +10,6 @@ An URL Shortening Service Created with Proton Framework <br>
 <a href="http://proton.aksoylu.space">Click for Proton Framework</a> by the way.
 
 -----
-
 ## How to install & staring up the project ?
 1) Import the **/urlvector__migrate.sql** file on your MySQL (or MariaDb) server
 2) Specify the database credentials in **/config.php**. (Also give attention for your database's true charset format, mine was utf-8)
