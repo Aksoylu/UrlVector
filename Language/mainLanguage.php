@@ -18,6 +18,7 @@ class mainLanguage{
       "pin_placeholder" => "4 haneli pin kodu",
       "pin" => "Pin",
       "pin_sub" => "Pin kodu, daha sonra URL'i yönetebilmenizi sağlar", 
+      "is_intranet_domain" => "Bu adres sadece güvenli (iç) bir  ağda mı çalışacak ?",
       "navigation_delay" => "Yönlendirme beklemesi (3 Saniye)",
       "user_message_header" => "Yönlendirme Mesajı",
       "user_message_placeholder" => "Mesaj...",
@@ -55,13 +56,13 @@ class mainLanguage{
       "navigation_url_sub" => "(Target URL)",
       "pin_placeholder" => "Pin (4 Digits)",
       "pin" => "Pin",
-      "pin_sub" => "Pin code allows you to manage url after issuing", 
+      "pin_sub" => "Pin code allows you to manage url after issuing",
+      "is_intranet_domain" => "Will this address only work on a secure (internal) network?",
       "navigation_delay" => "Navigation Delay (3 Sec)",
       "user_message_header" => "Routing Message",
       "user_message_placeholder" => "Message...",
       "user_message_text" => "Visitors will see this message before redirecting",
       "ok_button" => "Save",
-
       /* Service */
       "available" => "You can use this URL shortener.",
       "not_available" => "Sorry, this URL has already been taken.",

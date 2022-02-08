@@ -52,7 +52,12 @@ class mainService{
                 "isAvailable" => FALSE
             ]);
         
-        if(!$this->checkIsUrl($this->params->source_url))
+        if(isset($this->params->is_intranet_domain))
+            $this->params->is_intranet_domain = $this->parseBoolean($this->params->is_intranet_domain);
+        else
+            $this->params->is_intranet_domain = FALSE;
+
+        if(!$this->checkIsUrl($this->params->source_url, $this->params->is_intranet_domain))
             SERVICE::RESPONSE([
                 "code" => 301,
                 "msg" => TEXT::FORMAT(
@@ -101,7 +106,8 @@ class mainService{
                 "password" => md5($this->params->password),
                 "navigation_url" => $this->params->source_url,
                 "navigation_delay" => $this->params->delay,
-                "navigation_text" => $this->params->user_message
+                "navigation_text" => $this->params->user_message,
+                "is_intranet_domain" => $this->params->is_intranet_domain
 
             ]);
             $result = $query->run();
@@ -150,14 +156,28 @@ class mainService{
         return str_replace($unavailable, $available, $value);
     }
     
-    function checkIsUrl($url)
+    function checkIsUrl($url, $isIntranetDomain)
     {
-        if (preg_match("#^https?://.+#", $url) and @fopen($url,"r"))
-            return TRUE;
+        
+        if (preg_match("#^https?://.+#", $url))
+            {
+                if ($isIntranetDomain)
+                    return TRUE;
+                else
+                    {
+                        if (@fopen($url,"r"))
+                            return TRUE;
+                        else
+                            return FALSE;
+                    }
+            }
         else
             return FALSE;
     }
 
+    function parseBoolean($val){
+        return $isIntranetDomain == "true" ? TRUE : FALSE;
+    }
 
 }
 

@@ -49,6 +49,10 @@ PROTON::JSCONST("serviceServerError", $language->service_server_error);
               </div>
               <div id="dynamicArea">
               </div>
+              <div class="form-group form-check">
+                      <input type="checkbox" class="form-check-input" id="formIntranetDomainCheck">
+                      <label class="form-check-label" for="formIntranetDomainCheck"><?php echo $language->is_intranet_domain;?></label>
+              </div>
               <button type="button" onClick="issueService()" class="btn btn-outline-primary"><?php echo $language->ok_button;?></button>
               <br>
               <div id="responseDynamicArea"></div>

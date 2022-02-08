@@ -9,6 +9,7 @@ var availabilityText = null;
 var formUrl = null;
 var formPinInput = null;
 var formNavigationDelayCheck = null;
+var formIntranetDomainCheck = null;
 
 var dynamicArea = null;
 var userMessage = null;
@@ -26,6 +27,7 @@ window.onload = ()=>{
     formUrl = document.querySelector("#formUrl");
     formPinInput = document.querySelector("#formPinInput");
     formNavigationDelayCheck = document.querySelector("#formNavigationDelayCheck");
+    formIntranetDomainCheck = document.querySelector("#formIntranetDomainCheck");
     dynamicArea = document.querySelector("#dynamicArea");
     responseDynamicArea = document.querySelector("#responseDynamicArea");
 
@@ -142,6 +144,7 @@ const issueService = ()=>{
     formData.append("target_path",searchInput.value);
     formData.append("source_url",formUrl.value);
     formData.append("password",formPinInput.value);
+    formData.append("is_intranet_domain", formIntranetDomainCheck.checked);
     if(formNavigationDelayCheck.checked)
     {
         formData.append("delay", 1);
@@ -173,6 +176,7 @@ const fetchService = ()=>{
     request.onload = function() {
         if (this.status == 200) 
         {
+            console.log(this.response);
             let data = JSON.parse(this.response);
             availabilityText.innerHTML = data.msg;
             setAvailability(data.isAvailable);

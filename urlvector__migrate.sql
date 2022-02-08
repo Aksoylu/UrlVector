@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 06 Şub 2022, 12:19:47
+-- Üretim Zamanı: 08 Şub 2022, 18:31:32
 -- Sunucu sürümü: 10.4.17-MariaDB
 -- PHP Sürümü: 8.0.1
 
@@ -34,16 +34,17 @@ CREATE TABLE `urls` (
   `password` varchar(32) NOT NULL,
   `navigation_url` varchar(128) NOT NULL,
   `navigation_delay` int(11) NOT NULL,
-  `navigation_text` varchar(150) NOT NULL
+  `navigation_text` varchar(150) NOT NULL,
+  `is_intranet_domain` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `urls`
 --
 
-INSERT INTO `urls` (`id`, `name`, `issuing_date`, `password`, `navigation_url`, `navigation_delay`, `navigation_text`) VALUES
-(1, 'aksoylu', '2022-02-06 10:58:20', '4c56ff4ce4aaf9573aa5dff913df997a', 'http://umit.space', 3, 'Ümit Aksoylu\'s Personal Website and Blog'),
-(2, 'google', '2022-02-06 10:58:20', '4c56ff4ce4aaf9573aa5dff913df997a', 'http://google.com', 0, '');
+INSERT INTO `urls` (`id`, `name`, `issuing_date`, `password`, `navigation_url`, `navigation_delay`, `navigation_text`, `is_intranet_domain`) VALUES
+(1, 'aksoylu', '2022-02-06 10:58:20', '4c56ff4ce4aaf9573aa5dff913df997a', 'http://umit.space', 3, 'Ümit Aksoylu\'s Personal Website and Blog', 0),
+(2, 'google', '2022-02-06 10:58:20', '4c56ff4ce4aaf9573aa5dff913df997a', 'http://google.com', 0, '', 0);
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -63,7 +64,7 @@ ALTER TABLE `urls`
 -- Tablo için AUTO_INCREMENT değeri `urls`
 --
 ALTER TABLE `urls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
