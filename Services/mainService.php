@@ -20,6 +20,7 @@ class mainService{
         
         $url_name = $this->fixUrlName($this->params->url_name);
         $available = FALSE;
+        $is_intranet_domain = FALSE;
 
         $query = new XQuery();
         $query->select('urls',['id'])->where('name={url_name}', ["url_name" => $url_name]);    //._param()
@@ -53,11 +54,9 @@ class mainService{
             ]);
         
         if(isset($this->params->is_intranet_domain))
-            $this->params->is_intranet_domain = $this->parseBoolean($this->params->is_intranet_domain);
-        else
-            $this->params->is_intranet_domain = FALSE;
+            $is_intranet_domain = $this->parseBoolean($this->params->is_intranet_domain);
 
-        if(!$this->checkIsUrl($this->params->source_url, $this->params->is_intranet_domain))
+        if(!$this->checkIsUrl($this->params->source_url, $is_intranet_domain))
             SERVICE::RESPONSE([
                 "code" => 301,
                 "msg" => TEXT::FORMAT(
@@ -107,7 +106,7 @@ class mainService{
                 "navigation_url" => $this->params->source_url,
                 "navigation_delay" => $this->params->delay,
                 "navigation_text" => $this->params->user_message,
-                "is_intranet_domain" => $this->params->is_intranet_domain
+                "is_intranet_domain" => $is_intranet_domain
 
             ]);
             $result = $query->run();
