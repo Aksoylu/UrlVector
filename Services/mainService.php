@@ -176,7 +176,7 @@ class mainService{
     }
 
     function parseBoolean($val){
-        return $isIntranetDomain == "true" ? TRUE : FALSE;
+        return $val == "true" ? TRUE : FALSE;
     }
 
 }
